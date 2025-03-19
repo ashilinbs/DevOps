@@ -18,7 +18,7 @@ pipeline {
         stage('Build to Images') {
             steps {
                 script {
-                    sh 'docker build -t ashilin04/simplewebapp .'
+                    sh 'docker build -t ashilin02/simplewebapp .'
                 }
             }
         }
@@ -27,7 +27,7 @@ pipeline {
             steps {
                 script {
                     withDockerRegistry(credentialsId: 'cur', url: 'https://index.docker.io/v1/') {
-                        sh 'docker push ashilin04/simplewebapp'
+                        sh 'docker push ashilin02/simplewebapp'
                     }
                 }
             }
