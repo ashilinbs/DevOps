@@ -26,7 +26,7 @@ pipeline {
         stage('Push to Hub') {
             steps {
                 script {
-                    withDockerRegistry(credentialsId: 'cred', url: 'https://index.docker.io/v1/') {
+                    withDockerRegistry(credentialsId: 'cur', url: 'https://index.docker.io/v1/') {
                         sh 'docker push ashilin04/simplewebapp'
                     }
                 }
