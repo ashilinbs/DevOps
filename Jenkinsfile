@@ -10,15 +10,15 @@ pipeline {
 
         stage('Build') {
             steps {
-                bat "mvn clean"
-                bat "mvn install"
+                sh "mvn clean"
+                sh "mvn install"
             }
         }
 
         stage('Build to Images') {
             steps {
                 script {
-                    bat 'docker build -t ashilin04/simplewebapp .'
+                    sh 'docker build -t ashilin04/simplewebapp .'
                 }
             }
         }
@@ -27,7 +27,7 @@ pipeline {
             steps {
                 script {
                     withDockerRegistry(credentialsId: 'cred', url: 'https://index.docker.io/v1/') {
-                        bat 'docker push ashilin04/simplewebapp'
+                        sh 'docker push ashilin04/simplewebapp'
                     }
                 }
             }
